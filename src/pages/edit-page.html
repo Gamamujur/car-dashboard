@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Car</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="w-screen h-screen">
+            <div class="w-full h-full flex">
+                <!-- Dashboard -->
+                <div
+                    class="w-[70px] h-full bg-[#0D28A6] flex-col flex items-center pt-[18px]"
+                >
+                    <div class="w-[34px] h-[34px] bg-[#CFD4ED] mb-[18px]"></div>
+
+                    <div
+                        class="w-full h-[64px] flex flex-col justify-center items-center"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+                            <path
+                                d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M9 22V12H15V22"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                        <p class="text-[12px] text-white">Dashboard</p>
+                    </div>
+
+                    <div
+                        class="w-full h-[64px] flex flex-col justify-center items-center cursor-pointer bg-white/30"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+                            <path
+                                d="M18.5 21C19.8807 21 21 19.8807 21 18.5C21 17.1193 19.8807 16 18.5 16C17.1193 16 16 17.1193 16 18.5C16 19.8807 17.1193 21 18.5 21Z"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M5.5 21C6.88071 21 8 19.8807 8 18.5C8 17.1193 6.88071 16 5.5 16C4.11929 16 3 17.1193 3 18.5C3 19.8807 4.11929 21 5.5 21Z"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M16 8H20L23 11V16H16V8Z"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M16 3H1V16H16V3Z"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                        <p class="text-[12px] text-white">Cars</p>
+                    </div>
+                </div>
+                <!-- End Dashboard -->
+
+                <div class="h-full w-full overflow-x-hidden">
+                    <!-- Top Navbar -->
+                    <div
+                        class="h-[70px] flex items-center px-[24px] py-[18px] justify-between"
+                    >
+                        <div class="flex items-center">
+                            <div
+                                class="w-[100px] h-[34px] bg-[#CFD4ED] mr-[120px]"
+                            ></div>
+                            <div>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M3 18H21"
+                                        stroke="#151515"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M3 12H21"
+                                        stroke="#151515"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M3 6H21"
+                                        stroke="#151515"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="h-[50px] w-fit">
+                            <div class="flex h-full gap-[25px]">
+                                <div class="flex items-center gap-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 18 18"
+                                        fill="none"
+                                    >
+                                        <path
+                                            d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
+                                            stroke="#D0D0D0"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M15.75 15.75L12.4875 12.4875"
+                                            stroke="#D0D0D0"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                    <div class="flex">
+                                        <input
+                                            type="search"
+                                            placeholder="Search"
+                                            class="py-[8px]"
+                                        />
+                                        <button
+                                            class="px-[12px] py-[8px] border-[1px] border-[#0D28A6] font-bold text-[#0D28A6]"
+                                        >
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-[38px] h-[38px] bg-[#CFD4ED] rounded-full flex justify-center items-center"
+                                    >
+                                        <h1 class="font-bold">U</h1>
+                                    </div>
+
+                                    <div class="flex gap-2">
+                                        <h1>Unis Badri</h1>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                        >
+                                            <path
+                                                d="M6 9L12 15L18 9"
+                                                stroke="#151515"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Top Navbar -->
+
+                    <div class="h-full w-full flex">
+                        <!-- Inner SideBar -->
+                        <div class="w-[220px] pt-[23px]">
+                            <div class="w-full py-[11px] px-[24px]">
+                                <h1 class="font-bold text-[#8A8A8A]">CARS</h1>
+                            </div>
+
+                            <div
+                                class="w-full py-[11px] px-[24px] bg-[#CFD4ED]"
+                            >
+                                <h1 class="font-bold text-black">List Cars</h1>
+                            </div>
+                        </div>
+                        <!-- End Inner SideBar -->
+
+                        <!-- Inner Main Container -->
+                        <div class="bg-[#F4F5F7] h-full w-full">
+                            <!-- Container -->
+                            <div class="h-full pt-[32px] px-[25px] relative">
+                                <div class="mb-[20px]">
+                                    <h1
+                                        class="font-bold flex items-center gap-1"
+                                    >
+                                        Cars
+                                        <span class="flex items-center"
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                            >
+                                                <path
+                                                    d="M6 12L10 8L6 4"
+                                                    stroke="#222222"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <span class="font-bold">List Car</span>
+                                        <span class="flex items-center"
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                            >
+                                                <path
+                                                    d="M6 12L10 8L6 4"
+                                                    stroke="#222222"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <span class="text-gray-500 font-normal"
+                                            >Update Car Information</span
+                                        >
+                                    </h1>
+                                </div>
+
+                                <div class="mb-[24px] flex justify-between">
+                                    <h1 class="font-bold text-[20px]">
+                                        Update Car Information
+                                    </h1>
+                                </div>
+
+                                <!-- Main List Car Container -->
+                                <div class="w-full h-fit bg-white p-[16px]">
+                                    <form action="" class="flex flex-col gap-4">
+                                        <div class="flex items-center">
+                                            <label for="name" class="w-[147px]"
+                                                >Nama<span class="text-red-500"
+                                                    >*</span
+                                                ></label
+                                            >
+                                            <input
+                                                type="text"
+                                                id="name"
+                                                name="name"
+                                                class="p-2 border w-[339px] border-1 border-black"
+                                            />
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <label
+                                                for="dailyPrice"
+                                                class="w-[147px]"
+                                                >Sewa Per Hari<span
+                                                    class="text-red-500"
+                                                    >*</span
+                                                ></label
+                                            >
+                                            <input
+                                                type="number"
+                                                id="dailyPrice"
+                                                name="dailyPrice"
+                                                class="p-2 border w-[339px] border-1 border-black"
+                                                min="0"
+                                            />
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <label
+                                                for="ukuran"
+                                                class="w-[147px]"
+                                                >Ukuran</label
+                                            >
+                                            <select
+                                                name="size"
+                                                class="p-2 border w-[339px] border-1 border-black"
+                                            >
+                                                <option value="small">
+                                                    Small
+                                                </option>
+                                                <option value="medium">
+                                                    Medium
+                                                </option>
+                                                <option value="large">
+                                                    Large
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <label
+                                                for="imageFile"
+                                                class="w-[147px]"
+                                                >Foto<span class="text-red-500"
+                                                    >*</span
+                                                ></label
+                                            >
+                                            <input
+                                                type="file"
+                                                id="imageFile"
+                                                name="imageFile"
+                                                class="p-2 border w-[339px] border-1 border-black hidden"
+                                                onchange="validFile(this)"
+                                            />
+                                            <input
+                                                type="text"
+                                                id="imageFileText"
+                                                name="imageFileText"
+                                                class="p-2 border w-[339px] border-1 border-black"
+                                                onclick="handleInput(this)"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                class="p-2 border w-[339px] border-1 border-black"
+                                                id="cartype"
+                                                
+                                            />
+                                            <input
+                                                type="hidden"
+                                                class="p-2 border w-[339px] border-1 border-black"
+                                                id="carbrand"
+                                                
+                                            />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div
+                                    class="absolute w-fit h-fit bottom-[25px] left-[25px]"
+                                >
+                                    <div class="flex gap-2">
+                                        <button
+                                            class="px-[12px] py-[8px] border-[#0D28A6] border-[1px] text-[#0D28A6] text-[14px] font-bold"
+                                            id="cancelButton"
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button
+                                            class="px-[12px] py-[8px] border-[#0D28A6] border-[1px] text-white text-[14px] font-bold bg-[#0D28A6]"
+                                            id="saveButton"
+                                        >
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Inner Main Container -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const url = window.location.pathname;
+            const splitUrl = url.split("/");
+            const id = splitUrl[2];
+
+            let nameInput = document.getElementById("name");
+            let priceInput = document.getElementById("dailyPrice");
+            let sizeInput = document.querySelector('select[name="size"]');
+            let imageInput = document.getElementById("imageFile");
+            let textImageInput = document.getElementById("imageFileText");
+            let cartypeInput = document.getElementById("cartype");
+            let carbrandInput = document.getElementById("carbrand");
+
+            let saveButton = document.getElementById("saveButton");
+            let cancelButton = document.getElementById("cancelButton");
+
+            nameInput.addEventListener("input", handleValid);
+            priceInput.addEventListener("input", handleValid);
+            sizeInput.addEventListener("change", handleValid);
+            imageInput.addEventListener("change", handleValid);
+
+            cancelButton.addEventListener("click", () => {
+                window.location.href = "/";
+            });
+
+            document.addEventListener("DOMContentLoaded", () => {
+                fetch(`/car/get/${id}`, { method: "GET" })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(
+                                `HTTP error! Status: ${response.status}`
+                            );
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        nameInput.value = data.name;
+                        cartypeInput.value = data.id_car_type
+                        carbrandInput.value = data.id_car_brand
+                        priceInput.value = data.daily_price;
+                        sizeInput.value = data.size;
+                        imageInput.src = data.image;
+                        textImageInput.value = imageInput.src;
+                    });
+            });
+
+            function validFile(input) {
+                const file = input.files[0];
+
+                if (file) {
+                    const imageType = [
+                        "image/jpeg",
+                        "image/png",
+                        "image/gif",
+                        "image/webp",
+                    ];
+
+                    if (!imageType.includes(file.type)) {
+                        alert(
+                            "Field must be an image file (JPEG, PNG, GIF, or WebP)."
+                        );
+                        input.value = "";
+                    } else {
+                        textImageInput.value = "";
+                        textImageInput.style.display = "none";
+                        imageInput.style.display = "block";
+                    }
+                }
+            }
+
+            function handleInput() {
+                imageInput.click();
+            }
+
+            function handleValid() {
+                if (
+                    !nameInput.value ||
+                    !priceInput.value ||
+                    !sizeInput.value ||
+                    !(textImageInput.value || imageInput.files.length > 0)
+                ) {
+                    saveButton.disabled = true;
+                    saveButton.classList.add("bg-[#CFD4ED]");
+                } else {
+                    saveButton.disabled = false;
+                    saveButton.classList.remove("bg-[#CFD4ED]");
+                }
+            }
+
+            saveButton.addEventListener("click", () => {
+                const formData = new FormData();
+
+                const imageValue = textImageInput.value
+                    ? textImageInput.value
+                    : imageInput.files[0];
+
+                formData.append("name", nameInput.value);
+                formData.append("id_car_type", cartypeInput.value);
+                formData.append("id_car_brand", carbrandInput.value);
+                formData.append("daily_price", priceInput.value);
+                formData.append("size", sizeInput.value);
+                formData.append("image", imageValue);
+
+                fetch(`/car/car-edit/${id}`, {
+                    method: "PUT",
+                    body: formData,
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            window.location.href = "/";
+                        } else {
+                            console.error("Error submitting the form");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            });
+        </script>
+    </body>
+</html>
