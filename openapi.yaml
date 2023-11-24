@@ -1,0 +1,269 @@
+openapi: 3.1.0
+info:
+  title: "User and Car API"
+  description: "API for car data and users"
+  version: "1.0.0"
+
+paths:
+  /car/:
+    get:
+      description: "Get list of cars"
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: "Car1"
+                  brand: "Brand1"
+                  id_car_type : 1
+                  id_car_brand : 2
+                  daily_price : 5000
+                  size : 'small'
+        '401':
+          $ref : '#/components/responses/UnauthorizedError'
+        '500':
+          description: "Error connecting"
+
+  /car/get/{id}:
+    get:
+      description: "Get car by ID"
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Car ID"
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              example:
+                id: 1
+                name: "Car1"
+                id_car_type: 1
+                id_car_brand: 1
+                daily_price: 50
+                size: "medium"
+                image: "car1.jpg"
+        '401':
+          $ref : '#/components/responses/UnauthorizedError'
+
+  /car/post-car:
+    post:
+      description: "Create a new car data"
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                id_car_type:
+                  type: integer
+                id_car_brand:
+                  type: integer
+                daily_price:
+                  type: number
+                size:
+                  type: string
+      responses:
+        '200':
+          description: "Data submitted successfully"
+        '401':
+          $ref : '#/components/responses/UnauthorizedError'
+        '500':
+          description: "Error In Post"
+
+  /car/car-edit/{id}:
+    put:
+      description: "Update existing car by ID"
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Car ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                id_car_type:
+                  type: integer
+                id_car_brand:
+                  type: integer
+                daily_price:
+                  type: number
+                size:
+                  type: string
+      responses:
+        '200':
+          description: "Car data updated successfully"
+        '401':
+          $ref : '#/components/responses/UnauthorizedError'
+        '500':
+          description: "Error while updating"
+
+  /car/car-delete/{id}:
+    delete:
+      description: "Delete car data by ID"
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "ID of the car"
+      responses:
+        '200':
+          description: "Delete Car Success"
+        '401':
+          $ref : '#/components/responses/UnauthorizedError'
+        '500':
+          description: "Error while deleting"
+
+  /v1/user/getUser:
+    get:
+      description: "Get user data"
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              example:
+                Success:
+                  id: 1
+                  email: "user@example.com"
+                  role: "member"
+        '401':
+          $ref : '#/components/responses/UnauthorizedError'
+
+  /v1/user/register:
+    post:
+      description: "Register a new user"
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: "User registered successfully"
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              example:
+                message: "Email already registered"
+        '500':
+          description: 'Error while registering'
+
+  /v1/user/login:
+    post:
+      description: "User login"
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: "Login successful"
+          content:
+            application/json:
+              example:
+                status: 200
+                "Logged In": "jwt_token"
+        '400':
+          description: "Error"
+        '401':
+          description: "Unauthorized. Invalid Password"
+        '404':
+          description: "Not Found"
+
+
+  /v1/user/edit-user/{id}:
+    put:
+      description: "Edit user role ID"
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: string
+      responses:
+        '200':
+          description: "User data updated successfully"
+          content:
+            application/json:
+              example:
+                message: "User Data Updated"
+                data:
+                  id: 1
+                  email: "user@example.com"
+                  role: "admin"
+        '404':
+          description: "Desired Role Not Found"
+
+
+
+components:
+  responses:
+    UnauthorizedError:
+      description: 'Unauthorized. Missing or Invalid Token'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
