@@ -1,0 +1,209 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.car-img {
+  max-width: 1000px;
+}
+
+.navbar-cars {
+  background-color: #f1f3ff;
+}
+
+.navbar-brand {
+  background-color: #0d28a6;
+  width: 100px;
+  height: 34px;
+}
+
+@media (max-width: 767px) {
+  .offcanvas {
+    width: 50% !important;
+  }
+
+  .banner {
+    min-height: 60vh;
+  }
+
+  .carousel-inner {
+    width: 100vw !important;
+  }
+  .carousel-container {
+    height: auto !important;
+  }
+  .carousel-hug {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  .heading {
+    padding-left: 120px !important;
+  }
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 14px;
+}
+
+.hero {
+  background-color: #f1f3ff;
+}
+
+.hero-1 {
+  height: 590px;
+}
+
+.hero-2 {
+  height: 470px;
+  background-color: #f1f3ff;
+}
+
+.form-container {
+  width: 1047px;
+  height: 106px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.cars-parent{
+  width:1050px;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn-success {
+  background-color: #5cb85f !important;
+  border-radius: 2px !important;
+}
+
+.Why-Us {
+  padding-top: 150px;
+}
+
+.list-div {
+  gap: 16px;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000 !important;
+}
+
+.Testimonial {
+  margin-top: 150px;
+}
+
+.carousel-cover {
+  max-width: 619px;
+  max-height: 270px;
+  border-radius: 8px;
+  background-color: #f1f3ff;
+}
+
+.carousel-inner {
+  width: 619px;
+  padding-top: 49px;
+  padding-bottom: 69px;
+  padding-right: 40px !important;
+  padding-left: 40px;
+  background-color: #f1f3ff;
+}
+
+.Testimonial {
+  padding-bottom: 100px;
+}
+
+.Testimonial img {
+  width: 80px;
+  height: 80px;
+}
+
+.Testimonial p {
+  font-size: 14px;
+}
+
+.FQA {
+  margin-top: 100px;
+}
+
+.banner {
+  min-width: 328px;
+  max-height: 400px;
+  max-width: 1168px;
+  max-height: 326px;
+  background-color: #0d28a6;
+  padding: 64px;
+  border-radius: 13px;
+}
+
+.banner p {
+  max-width: 468px;
+  max-height: 40px;
+}
+
+footer li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.carousel-container {
+  width: 1921px;
+  height: 270px;
+}
+
+.carousel-hug {
+  margin-left: -10%;
+}
+
+.d-flex.carousel-container {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.carousel-hug {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.hover-circle {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+button:hover .hover-circle {
+  opacity: 1;
+}
+
+.hover-path {
+  stroke: #222222;
+  transition: stroke 0.3s ease-in-out;
+}
+
+button:hover .hover-path {
+  stroke: #ffffff;
+}
+
+
