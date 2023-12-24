@@ -1,36 +1,38 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
-import axios from "axios";
-import { useNavigate } from "react-router";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import axios from 'axios'
+import type { FC } from 'react'
 
-const Login = () => {
-    const apiRoute = "http://localhost:3000/v1/user/login";
-    const emailRef = useRef<HTMLInputElement>(null);
-    const passwordRef = useRef<HTMLInputElement>(null);
-    const [isError, setError] = useState(false);
-    
-    const navigate = useNavigate()
+interface LoginProps {
+    navigate: (to: string) => void
+}
+
+const Login: FC<LoginProps> = ({ navigate }) => {
+    const apiRoute = 'http://localhost:3000/v1/user/login'
+    const emailRef = useRef<HTMLInputElement>(null)
+    const passwordRef = useRef<HTMLInputElement>(null)
+    const [isError, setError] = useState(false)
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const emailValue = emailRef.current?.value;
-        const passwordValue = passwordRef.current?.value;
+        const emailValue = emailRef.current?.value
+        const passwordValue = passwordRef.current?.value
 
         try {
             const response = await axios.post(apiRoute, {
                 email: emailValue,
-                password: passwordValue,
-            });
+                password: passwordValue
+            })
 
             localStorage.setItem('token', response.data['Logged In'])
-            setError(false);
+            setError(false)
             navigate('/crud-cars')
         } catch (error) {
-            setError(true);
+            setError(true)
         }
-    };
+    }
     return (
         <div className="overflow-x-hidden">
             <div className="row vh-100">
@@ -49,14 +51,14 @@ const Login = () => {
                             viewBox="0 0 100 34"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            style={{ marginBottom: "32px" }}
+                            style={{ marginBottom: '32px' }}
                         >
                             <rect width="100" height="34" fill="#CFD4ED" />
                         </svg>
 
                         <h2
                             className="text-start"
-                            style={{ marginBottom: "32px" }}
+                            style={{ marginBottom: '32px' }}
                         >
                             Welcome, Admin BCR
                         </h2>
@@ -69,7 +71,7 @@ const Login = () => {
                             </div>
                         )}
 
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} data-testid="login-form">
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
                                 <input
@@ -78,6 +80,7 @@ const Login = () => {
                                     id="email"
                                     placeholder="Enter email"
                                     ref={emailRef}
+                                    data-testid='emailinput'
                                 />
                             </div>
                             <div className="form-group">
@@ -88,12 +91,13 @@ const Login = () => {
                                     id="password"
                                     placeholder="Password"
                                     ref={passwordRef}
+                                    data-testid='passinput'
                                 />
                             </div>
                             <button
                                 type="submit"
                                 className="text-white btn btn-block w-100"
-                                style={{ backgroundColor: "#0D28A6" }}
+                                style={{ backgroundColor: '#0D28A6' }}
                             >
                                 Sign In
                             </button>
@@ -102,7 +106,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Login;
+export default Login

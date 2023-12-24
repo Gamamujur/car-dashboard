@@ -1,4 +1,4 @@
-
+import React from 'react'
 const WhyUs = () => {
     return (
         <section className="mt-5 Why-Us min-vh-50" id="why-us">
@@ -10,7 +10,7 @@ const WhyUs = () => {
                 <div className="gap-5 d-flex flex-column flex-lg-row">
                     <div
                         className="card"
-                        style={{ maxWidth: "268px", maxHeight: "198px" }}
+                        style={{ maxWidth: '268px', maxHeight: '198px' }}
                     >
                         <div className="card-body">
                             <h5 className="card-title">
@@ -34,7 +34,7 @@ const WhyUs = () => {
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                     />
-                                </svg>{" "}
+                                </svg>{' '}
                             </h5>
 
                             <h6 className="mb-2 ">Mobil Lengkap</h6>
@@ -47,7 +47,7 @@ const WhyUs = () => {
 
                     <div
                         className="card"
-                        style={{ maxWidth: "268px", maxHeight: "198px" }}
+                        style={{ maxWidth: '268px', maxHeight: '198px' }}
                     >
                         <div className="card-body">
                             <h5 className="card-title">
@@ -90,7 +90,7 @@ const WhyUs = () => {
 
                     <div
                         className="card"
-                        style={{ maxWidth: "268px", maxHeight: "198px" }}
+                        style={{ maxWidth: '268px', maxHeight: '198px' }}
                     >
                         <div className="card-body">
                             <h5 className="card-title">
@@ -135,7 +135,7 @@ const WhyUs = () => {
 
                     <div
                         className="card"
-                        style={{ maxWidth: "268px", maxHeight: "198px" }}
+                        style={{ maxWidth: '268px', maxHeight: '198px' }}
                     >
                         <div className="card-body">
                             <h5 className="card-title">
@@ -180,7 +180,7 @@ const WhyUs = () => {
                 </div>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default WhyUs;
+export default WhyUs

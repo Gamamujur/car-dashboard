@@ -1,15 +1,14 @@
-import { FC } from "react";
+import React, { type FC } from 'react'
 
-
-type CarsCardProps = {
-    image: string;
-    name: string;
-    price: string | number;
-    description: string;
-    capacity: string | number;
-    transmission: string;
-    year: number | string;
-};
+interface CarsCardProps {
+  image: string
+  name: string
+  price: string | number
+  description: string
+  capacity: string | number
+  transmission: string
+  year: number | string
+}
 
 const CarsCard: FC<CarsCardProps> = ({
     name,
@@ -18,30 +17,30 @@ const CarsCard: FC<CarsCardProps> = ({
     description,
     capacity,
     transmission,
-    year,
+    year
 }) => {
     return (
         <div className="col-md-4">
-            <div className="card" style={{ width: "18rem" }}>
+            <div className="card" style={{ width: '18rem' }}>
                 <img
                     src={image}
                     className="card-img-top"
                     alt={name}
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: 'cover' }}
                     height="250px"
                     width="350px"
                 />
                 <div className="card-body">
-                    <h5 className="card-title" style={{ fontSize: "14px" }}>
+                    <h5 className="card-title" style={{ fontSize: '14px' }}>
                         {name}
                     </h5>
                     <p
                         className="card-text fw-bold"
-                        style={{ fontSize: "16px" }}
+                        style={{ fontSize: '16px' }}
                     >
                         Rp {price.toLocaleString()} / hari
                     </p>
-                    <p className="card-text" style={{ fontSize: "14px" }}>
+                    <p className="card-text" style={{ fontSize: '14px' }}>
                         {description}
                     </p>
                     <div className="d-flex-row align-items-center">
@@ -49,7 +48,7 @@ const CarsCard: FC<CarsCardProps> = ({
                             <i>
                                 <img src="./images/fi_users.png" />
                             </i>
-                            <span className="ms-2" style={{ fontSize: "14px" }}>
+                            <span className="ms-2" style={{ fontSize: '14px' }}>
                                 {capacity} orang
                             </span>
                         </div>
@@ -57,7 +56,7 @@ const CarsCard: FC<CarsCardProps> = ({
                             <i>
                                 <img src="./images/fi_settings.png" />
                             </i>
-                            <span className="ms-2" style={{ fontSize: "14px" }}>
+                            <span className="ms-2" style={{ fontSize: '14px' }}>
                                 {transmission}
                             </span>
                         </div>
@@ -65,7 +64,7 @@ const CarsCard: FC<CarsCardProps> = ({
                             <i>
                                 <img src="./images/fi_calendar.png" />
                             </i>
-                            <span className="ms-2" style={{ fontSize: "14px" }}>
+                            <span className="ms-2" style={{ fontSize: '14px' }}>
                                 Tahun {year}
                             </span>
                         </div>
@@ -76,7 +75,7 @@ const CarsCard: FC<CarsCardProps> = ({
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default CarsCard;
+export default CarsCard

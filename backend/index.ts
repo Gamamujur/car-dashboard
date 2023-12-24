@@ -5,30 +5,30 @@ import { upload } from "./src/middleware/upload";
 import { knex } from "knex";
 import { Model } from "objection";
 
-
-const YAML = require("yamljs")
-const swaggerUI = require("swagger-ui-express")
-const swaggerDoc = YAML.load('./openapi.yaml')
-const cors = require('cors')
-
-const app: Express = express();
+const YAML = require("yamljs");
+const swaggerUI = require("swagger-ui-express");
+const swaggerDoc = YAML.load("./openapi.yaml");
+const cors = require("cors");
 const port = 3000 || 8000;
 
-app.use(cors())
+const app: Express = express();
+
+
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(upload.single("image"));
 
 const knexInstance = knex({
-    client: 'postgresql',
+    client: "postgresql",
     connection: {
-        database: 'chapter_5',
-        user: 'bejok',
-        password: '123456'
-    }
-})
+        database: "chapter_5",
+        user: "bejok",
+        password: "123456",
+    },
+});
 
-Model.knex(knexInstance)
+Model.knex(knexInstance);
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/src/pages/index.html");
@@ -38,10 +38,12 @@ app.get("/edit-page/:id", (req, res) => {
     res.sendFile(__dirname + `/src/pages/edit-page.html`);
 });
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
-app.use("/cars",carRouter);
-app.use("/v1/user", userRouter)
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+app.use("/cars", carRouter);
+app.use("/v1/user", userRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+module.exports = app;

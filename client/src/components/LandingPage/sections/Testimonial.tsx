@@ -1,35 +1,37 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
 const Testimonial = () => {
-    const [currentTestimonial, setCurrentTestimonial] = useState(0);
-    const [testimonialWidth, setTestimonialWidth] = useState(0);
+    const [currentTestimonial, setCurrentTestimonial] = useState(0)
+    const [testimonialWidth, setTestimonialWidth] = useState(0)
 
     useEffect(() => {
-        
         const width =
-            document.querySelector(".carousel-inner")?.clientWidth || 0;
-        setTestimonialWidth(width);
-    }, []);
+            document.querySelector('.carousel-inner')?.clientWidth ?? 0
+        setTestimonialWidth(width)
+    }, [])
 
     useEffect(() => {
-        showTestimonial(currentTestimonial);
-    }, [currentTestimonial, testimonialWidth]);
+        showTestimonial(currentTestimonial)
+    }, [currentTestimonial, testimonialWidth])
 
-    const showTestimonial = (testimonialIndex : number) => {
-        const testimonialContainer = document.querySelector('.carousel-hug') as HTMLElement | null;
+    const showTestimonial = (testimonialIndex: number) => {
+        const testimonialContainer = document.querySelector('.carousel-hug')
         if (testimonialContainer) {
-          const offset = testimonialIndex * testimonialWidth;
-          testimonialContainer.style.transform = `translateX(-${offset}px)`;
+            const offset = testimonialIndex * testimonialWidth
+            /* // eslint-disable-next-line
+            @typescript-eslint/ban-ts-comment //
+            @ts-expect-error */
+            testimonialContainer.style.transform = `translateX(-${offset}px)`
         }
-      };
-      
+    }
+
     const nextTestimonial = () => {
-        setCurrentTestimonial((prev) => (prev + 1) % 3);
-    };
+        setCurrentTestimonial((prev) => (prev + 1) % 3)
+    }
 
     const previousTestimonial = () => {
-        setCurrentTestimonial((prev) => (prev - 1 + 3) % 3);
-    };
+        setCurrentTestimonial((prev) => (prev - 1 + 3) % 3)
+    }
 
     return (
         <>
@@ -92,7 +94,7 @@ const Testimonial = () => {
                                     </p>
                                     <p
                                         className="mt-2 ml-5 text-start"
-                                        style={{ fontWeight: "600" }}
+                                        style={{ fontWeight: '600' }}
                                     >
                                         John Dee 32, Bromo
                                     </p>
@@ -146,7 +148,7 @@ const Testimonial = () => {
                                     </p>
                                     <p
                                         className="mt-2 ml-5 text-start"
-                                        style={{ fontWeight: "600" }}
+                                        style={{ fontWeight: '600' }}
                                     >
                                         John Dee 32, Bromo
                                     </p>
@@ -200,7 +202,7 @@ const Testimonial = () => {
                                     </p>
                                     <p
                                         className="mt-2 ml-5 text-start"
-                                        style={{ fontWeight: "600" }}
+                                        style={{ fontWeight: '600' }}
                                     >
                                         John Dee 32, Bromo
                                     </p>
@@ -254,7 +256,7 @@ const Testimonial = () => {
                                     </p>
                                     <p
                                         className="mt-2 ml-5 text-start"
-                                        style={{ fontWeight: "600" }}
+                                        style={{ fontWeight: '600' }}
                                     >
                                         John Dee 32, Bromo
                                     </p>
@@ -308,7 +310,7 @@ const Testimonial = () => {
                                     </p>
                                     <p
                                         className="mt-2 ml-5 text-start"
-                                        style={{ fontWeight: "600" }}
+                                        style={{ fontWeight: '600' }}
                                     >
                                         John Dee 32, Bromo
                                     </p>
@@ -393,7 +395,7 @@ const Testimonial = () => {
                 </div>
             </section>
         </>
-    );
-};
+    )
+}
 
-export default Testimonial;
+export default Testimonial

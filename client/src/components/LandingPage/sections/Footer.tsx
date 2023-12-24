@@ -1,7 +1,8 @@
+import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className="container" style={{ marginTop:'150px' }}>
+        <footer className="container" style={{ marginTop: '150px' }}>
             <div className="row">
                 <div className="mb-3 col-lg-3 col-md-6 col-sm-12">
                     <p>Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</p>
@@ -107,7 +108,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-    );
-};
+    )
+}
 
-export default Footer;
+export default Footer

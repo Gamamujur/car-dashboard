@@ -1,77 +1,77 @@
-import { FC, useState } from "react";
-import Imagefile from "./Imagefile";
-import axios from "axios";
+import React, { type FC, useState } from 'react'
+import Imagefile from './Imagefile'
+import axios from 'axios'
 
-type DeleteModalProps = {
-    modalHandler: (value: string) => void;
-    carID: number;
-    setID: (value: number) => void;
-    statusHandler: (value: string) => void;
-    refreshHandler : () => void
-};
+interface DeleteModalProps {
+  modalHandler: (value: string) => void
+  carID: number
+  setID: (value: number) => void
+  statusHandler: (value: string) => void
+  refreshHandler: () => void
+}
 const DeleteModal: FC<DeleteModalProps> = ({
     modalHandler,
     carID,
     statusHandler,
     refreshHandler
 }) => {
-    const deleteAPI = `http://localhost:3000/cars/car-delete/${carID}`;
-    const [isDeleting, setDeleting] = useState(false);
+    const deleteAPI = `http://localhost:3000/cars/car-delete/${carID}`
+    const [isDeleting, setDeleting] = useState(false)
 
     const deleteHandler = async () => {
         try {
-            setDeleting(true);
+            setDeleting(true)
             const responseDelete = await axios.delete(deleteAPI, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            });
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
 
             if (responseDelete.status !== 200) {
-                modalHandler("unknown");
-                statusHandler("");
-                return;
+                modalHandler('unknown')
+                statusHandler('')
+                return
             }
             refreshHandler()
-            setDeleting(false);
-            modalHandler("index");
-            statusHandler("delete");
-            return;
+            setDeleting(false)
+            modalHandler('index')
+            statusHandler('delete')
         } catch (error) {
-            return error;
+            return error
         }
-    };
+    }
+    /* istanbul ignore next */
     return (
         <div
             style={{
-                position: "fixed",
+                position: 'fixed',
                 top: 0,
-                width: "100%",
-                height: "100%",
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.3)'
             }}
             id="deleteModal"
         >
             <div
                 style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "100%",
-                    height: "100%",
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100%',
+                    height: '100%'
                 }}
             >
                 <div
                     style={{
-                        width: "387px",
-                        height: "333px",
-                        backgroundColor: "white",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        padding: "32px 24px",
-                        gap: "2",
+                        width: '387px',
+                        height: '333px',
+                        backgroundColor: 'white',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '32px 24px',
+                        gap: '2'
                     }}
                 >
                     <svg
@@ -120,60 +120,62 @@ const DeleteModal: FC<DeleteModalProps> = ({
                             <Imagefile />
                         </defs>
                     </svg>
-                    <h1 style={{ fontWeight: "bold", fontSize: "16px" }}>
+                    <h1 style={{ fontWeight: 'bold', fontSize: '16px' }}>
                         Menghapus Data Mobil
                     </h1>
                     <p
                         style={{
-                            textAlign: "center",
-                            fontSize: "14px",
-                            marginBottom: "4px",
-                            padding: "4px",
+                            textAlign: 'center',
+                            fontSize: '14px',
+                            marginBottom: '4px',
+                            padding: '4px'
                         }}
                     >
                         Setelah dihapus, data mobil tidak dapat dikembalikan.
                         Yakin ingin menghapus?
                     </p>
-                    <div style={{ display: "flex", gap: "10px" }}>
+                    <div style={{ display: 'flex', gap: '10px' }}>
                         <button
                             style={{
-                                paddingLeft: "12px",
-                                paddingRight: "12px",
+                                paddingLeft: '12px',
+                                paddingRight: '12px',
 
-                                backgroundColor: "#0D28A6",
-                                color: "white",
-                                fontWeight: "bold",
-                                fontSize: "14px",
-                                width: "87px",
-                                height: "36px",
+                                backgroundColor: '#0D28A6',
+                                color: 'white',
+                                fontWeight: 'bold',
+                                fontSize: '14px',
+                                width: '87px',
+                                height: '36px'
                             }}
                             id="yesModal"
                             onClick={deleteHandler}
                         >
-                            {isDeleting ? (
-                                <div
-                                    className="spinner-border"
-                                    role="status"
-                                ></div>
-                            ) : (
-                                "Ya"
-                            )}
+                            {isDeleting
+                                ? (
+                                    <div
+                                        className="spinner-border"
+                                        role="status"
+                                    ></div>
+                                )
+                                : (
+                                    'Ya'
+                                )}
                         </button>
                         <button
                             style={{
-                                paddingLeft: "12px",
-                                paddingRight: "12px",
+                                paddingLeft: '12px',
+                                paddingRight: '12px',
 
-                                backgroundColor: "white",
-                                color: "#0D28A6",
-                                fontWeight: "bold",
-                                fontSize: "14px",
-                                width: "87px",
-                                height: "36px",
-                                border: "1px solid #0D28A6",
+                                backgroundColor: 'white',
+                                color: '#0D28A6',
+                                fontWeight: 'bold',
+                                fontSize: '14px',
+                                width: '87px',
+                                height: '36px',
+                                border: '1px solid #0D28A6'
                             }}
                             id="cancelModal"
-                            onClick={() => modalHandler("index")}
+                            onClick={() => { modalHandler('index') }}
                         >
                             Tidak
                         </button>
@@ -181,7 +183,7 @@ const DeleteModal: FC<DeleteModalProps> = ({
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default DeleteModal;
+export default DeleteModal

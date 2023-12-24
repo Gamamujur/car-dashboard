@@ -1,71 +1,71 @@
-import OuterSidebar from "./components/OuterSidebar";
-import Header from "./components/Header";
-import InnerContainer from "./components/InnerContainer";
-import MainContainer from "./components/MainContainer";
-import DeleteModal from "./components/DeleteModal";
-import { useState } from "react";
-import "../../App.css";
+import OuterSidebar from './components/OuterSidebar'
+import Header from './components/Header'
+import InnerContainer from './components/InnerContainer'
+import MainContainer from './components/MainContainer'
+import DeleteModal from './components/DeleteModal'
+import React, { useState } from 'react'
+import '../../App.css'
 
 const CarDashboard = () => {
-    const [crudValue, setValue] = useState("index");
-    const [carID, setCarID] = useState(0);
-    const [crudStatus, setStatus] = useState("");
-    const [isRefresh, setRefresh] = useState(false);
+    const [crudValue, setValue] = useState('index')
+    const [carID, setCarID] = useState(0)
+    const [crudStatus, setStatus] = useState('')
+    const [isRefresh, setRefresh] = useState(false)
 
     const statusHandler = (value: string) => {
-        setStatus(value);
+        setStatus(value)
         setTimeout(() => {
-            setStatus("");
-        }, 3000);
-    };
+            setStatus('')
+        }, 3000)
+    }
 
     const dynamicStyles = {
-        width: "100vw",
-        height: "100vh",
-    };
+        width: '100vw',
+        height: '100vh'
+    }
 
     const renderHandler = (value: string) => {
-        setValue(value);
-    };
+        setValue(value)
+    }
 
     const refreshHandler = () => {
-        setRefresh(!isRefresh);
-    };
+        setRefresh(!isRefresh)
+    }
 
     return (
         <>
             <div style={dynamicStyles}>
-                <div style={{ display: "flex", width: "100%", height: "100%" }}>
+                <div style={{ display: 'flex', width: '100%', height: '100%' }}>
                     <OuterSidebar />
 
                     <div
                         style={{
-                            width: "100%",
-                            height: "100%",
-                            overflowX: "hidden",
+                            width: '100%',
+                            height: '100%',
+                            overflowX: 'hidden'
                         }}
                     >
                         <div
                             style={{
-                                height: "70px",
-                                display: "flex",
-                                alignItems: "center",
-                                padding: "18px 24px",
-                                justifyContent: "space-between",
+                                height: '70px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                padding: '18px 24px',
+                                justifyContent: 'space-between'
                             }}
                         >
                             <div
                                 style={{
-                                    display: "flex",
-                                    alignItems: "center",
+                                    display: 'flex',
+                                    alignItems: 'center'
                                 }}
                             >
                                 <div
                                     style={{
-                                        width: "100px",
-                                        height: "34px",
-                                        backgroundColor: "#CFD4ED",
-                                        marginRight: "120px",
+                                        width: '100px',
+                                        height: '34px',
+                                        backgroundColor: '#CFD4ED',
+                                        marginRight: '120px'
                                     }}
                                 ></div>
                                 <div>
@@ -104,9 +104,9 @@ const CarDashboard = () => {
                         </div>
                         <div
                             style={{
-                                display: "flex",
-                                width: "100%",
-                                height: "100%",
+                                display: 'flex',
+                                width: '100%',
+                                height: '100%'
                             }}
                         >
                             <InnerContainer />
@@ -123,7 +123,7 @@ const CarDashboard = () => {
                     </div>
                 </div>
             </div>
-            {crudValue === "delete" && (
+            {crudValue === 'delete' && (
                 <DeleteModal
                     refreshHandler={refreshHandler}
                     modalHandler={renderHandler}
@@ -133,7 +133,7 @@ const CarDashboard = () => {
                 />
             )}
         </>
-    );
-};
+    )
+}
 
-export default CarDashboard;
+export default CarDashboard

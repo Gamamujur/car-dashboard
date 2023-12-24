@@ -1,3 +1,4 @@
+import React from 'react'
 
 const FrequentQuestion = () => {
     return (
@@ -160,7 +161,7 @@ const FrequentQuestion = () => {
                 </div>
             </section>
         </>
-    );
-};
+    )
+}
 
-export default FrequentQuestion;
+export default FrequentQuestion

@@ -1,18 +1,20 @@
-import { useUser } from "../../../Context/UserContext";
+import { useUser } from '../../../Context/UserContext'
+import React from 'react'
+
 const Header = () => {
-    const { user } = useUser();
+    const { user } = useUser()
 
     const username = user?.email.split('@')[0]
     const capital = username?.split('')[0].toLocaleUpperCase()
 
     return (
-        <div style={{ height: "50px", width: "fit-content" }}>
-            <div style={{ display: "flex", height: "100%", gap: "25px" }}>
+        <div style={{ height: '50px', width: 'fit-content' }}>
+            <div style={{ display: 'flex', height: '100%', gap: '25px' }}>
                 <div
                     style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "4px",
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px'
                     }}
                 >
                     <svg
@@ -37,21 +39,21 @@ const Header = () => {
                             strokeLinejoin="round"
                         />
                     </svg>
-                    <div style={{ display: "flex" }}>
+                    <div style={{ display: 'flex' }}>
                         <input
                             type="search"
                             placeholder="Search"
-                            style={{ padding: "4px", border: "0" }}
+                            style={{ padding: '4px', border: '0' }}
                         />
                         <button
                             style={{
-                                paddingLeft: "12px",
-                                paddingRight: "12px",
-                                border: "1px solid #0D28A6",
-                                fontWeight: "bold",
-                                backgroundColor: "white",
-                                paddingTop: "8px",
-                                paddingBottom: "8px",
+                                paddingLeft: '12px',
+                                paddingRight: '12px',
+                                border: '1px solid #0D28A6',
+                                fontWeight: 'bold',
+                                backgroundColor: 'white',
+                                paddingTop: '8px',
+                                paddingBottom: '8px'
                             }}
                         >
                             Search
@@ -60,35 +62,35 @@ const Header = () => {
                 </div>
                 <div
                     style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "2px",
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '2px'
                     }}
                 >
                     <div
                         style={{
-                            width: "38px",
-                            height: "38px",
-                            backgroundColor: "#CFD4ED",
-                            borderRadius: "50%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            paddingTop: "5px",
+                            width: '38px',
+                            height: '38px',
+                            backgroundColor: '#CFD4ED',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            paddingTop: '5px'
                         }}
                     >
-                        <h1 style={{ fontWeight: "bold", fontSize: "20px" }}>
+                        <h1 style={{ fontWeight: 'bold', fontSize: '20px' }}>
                             {capital}
                         </h1>
                     </div>
                     <div
                         style={{
-                            display: "flex",
-                            gap: "2px",
-                            alignContent: "center",
+                            display: 'flex',
+                            gap: '2px',
+                            alignContent: 'center'
                         }}
                     >
-                        <h1 style={{ fontSize: "14px", paddingTop: "10px" }}>
+                        <h1 style={{ fontSize: '14px', paddingTop: '10px' }}>
                             {username}
                         </h1>
                         <svg
@@ -97,7 +99,7 @@ const Header = () => {
                             height="24"
                             viewBox="0 0 24 24"
                             fill="none"
-                            style={{ paddingTop: "10px" }}
+                            style={{ paddingTop: '10px' }}
                         >
                             <path
                                 d="M6 9L12 15L18 9"
@@ -111,7 +113,7 @@ const Header = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header

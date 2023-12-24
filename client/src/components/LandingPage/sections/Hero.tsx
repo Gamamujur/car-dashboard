@@ -1,7 +1,7 @@
-
+import React from 'react'
 const Hero = () => {
     return (
-        <section className="mb-5 hero">
+        <section className="mb-5 hero" data-testid='hero-id'>
             <nav className="navbar navbar-expand-lg">
                 <div className="container-lg">
                     <a className="navbar-brand" href="#"></a>
@@ -60,17 +60,17 @@ const Hero = () => {
                         </h1>
                         <p
                             style={{
-                                maxWidth: "468px",
-                                marginTop: "16px",
-                                marginBottom: "16px",
+                                maxWidth: '468px',
+                                marginTop: '16px',
+                                marginBottom: '16px'
                             }}
                         >
                             Selamat datang di Binar Car Rental. Kami menyediakan
                             mobil kualitas terbaik dengan harga terjangkau.
                             Selalu siap melayani kebutuhanmu untuk sewa mobil
-                            selama 24 jam.{" "}
+                            selama 24 jam.{' '}
                         </p>
-                        <a className="btn btn-success rounded-0 fw-semibold" href="/cars">
+                        <a className="btn btn-success rounded-0 fw-semibold" href="/cars" data-testid='redirect-button'>
                             Mulai Sewa Mobil
                         </a>
                     </div>
@@ -85,7 +85,7 @@ const Hero = () => {
                 </div>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default Hero;
+export default Hero

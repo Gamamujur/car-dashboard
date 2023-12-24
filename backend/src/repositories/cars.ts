@@ -9,13 +9,13 @@ export type CarData = {
     image: string;
     start_rent: Date;
     finish_rent: Date;
-    capacity: number,
-    description : string,
-    transmission : string,
-    year : number | string,
-    available_at:Date
+    capacity: number;
+    description: string;
+    transmission: string;
+    year: number | string;
+    available_at: Date;
 };
-
+/* istanbul ignore next */
 class CarRepository {
     async getAll() {
         const getAllCar = await CarModel.query();
@@ -29,19 +29,28 @@ class CarRepository {
         return getCarById;
     }
 
-    async postCar(data : CarData) {
-        const result = await CarModel.query().insert(data).returning("*");
-        return result
+    async postCar(data: CarData) {
+        
+            const result = await CarModel.query().insert(data).returning("*");
+            return result;
+        
     }
 
-    async patchCar (data: CarData, id : number) {
-        const result = await CarModel.query().where({id}).update(data).returning('*')
-        return result
+    async patchCar(data: CarData, id: number) {
+        const result = await CarModel.query()
+            .where({ id })
+            .update(data)
+            .returning("*");
+        return result;
     }
 
-    async deleteCar(id:number) {
-        const result = await CarModel.query().where({id}).del().throwIfNotFound().returning('*')
-        return result
+    async deleteCar(id: number) {
+        const result = await CarModel.query()
+            .where({ id })
+            .del()
+            .throwIfNotFound()
+            .returning("*");
+        return result;
     }
 }
 

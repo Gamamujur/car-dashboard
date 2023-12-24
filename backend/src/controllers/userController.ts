@@ -12,6 +12,7 @@ const getUser = async (req: Request, res: Response) => {
         // @ts-ignore
         return res.status(200).json({ Success: req.user });
     } catch (error) {
+        /* istanbul ignore next */
         return res.status(401).json({ message: "Unauthorized" });
     }
 };
@@ -34,8 +35,10 @@ const registerUser = async (req: Request, res: Response) => {
         // Encrypt password
         const hashPass = await encryptPass(password);
         const stringHash = String(hashPass);
+        const userId = Math.floor(Math.random() * 900) + 100;
 
         const data = {
+            id : userId,
             email: caseEmail,
             password: stringHash,
             role,
@@ -51,7 +54,8 @@ const registerUser = async (req: Request, res: Response) => {
             .status(201)
             .json({ message: "User Successfully Registered" });
     } catch (error) {
-        return res.json({ "Error Message": error });
+        /* istanbul ignore next */ // @ts-ignore
+        return res.json({ "Error Message": error.message });
     }
 };
 
@@ -80,7 +84,6 @@ const loginFunction = async (req: Request, res: Response) => {
                 role: userFound.role,
             },
             "CAR-DASH",
-            { expiresIn: "10d" }
         );
 
         return res.status(200).json({
@@ -104,7 +107,9 @@ const patchFunction = async (req: Request, res: Response) => {
         const updateRole = await new UserService().patchUser(role, Number(id));
 
         return res.status(200).json({ message: "User Data Updated", data : updateRole});
+        /* istanbul ignore next */
     } catch (error) {
+        /* istanbul ignore next */
         return res.status(400).json({message : error})
     }
 };

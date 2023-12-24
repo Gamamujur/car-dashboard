@@ -1,3 +1,4 @@
+import React from 'react'
 
 const Service = () => {
     return (
@@ -20,7 +21,7 @@ const Service = () => {
                             jaminan harga lebih murah dibandingkan yang lain,
                             kondisi mobil baru, serta kualitas pelayanan terbaik
                             untuk perjalanan wisata, bisnis, wedding, meeting,
-                            dll.{" "}
+                            dll.{' '}
                         </p>
                         <div className="d-flex flex-column list-div">
                             <li className="gap-2 d-flex">
@@ -156,7 +157,7 @@ const Service = () => {
                 </div>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default Service;
+export default Service

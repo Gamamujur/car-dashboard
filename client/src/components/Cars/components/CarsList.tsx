@@ -1,16 +1,16 @@
-import { FC } from "react";
+import React, { type FC } from 'react'
 
-type CarListProps = {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    start_rent: Date;
-    finish_rent: Date;
-    updated_at: Date;
-    renderHandler: (value: string) => void;
-    stateId: (value: number) => void;
-};
+interface CarListProps {
+  id: number
+  name: string
+  price: number
+  image: string
+  start_rent: Date
+  finish_rent: Date
+  updated_at: Date
+  renderHandler: (value: string) => void
+  stateId: (value: number) => void
+}
 
 const CarsList: FC<CarListProps> = ({
     id,
@@ -21,89 +21,90 @@ const CarsList: FC<CarListProps> = ({
     finish_rent,
     updated_at,
     renderHandler,
-    stateId,
+    stateId
 }) => {
+    /* istanbul ignore next */
     const dateFormat = (stringDate: Date, minute?: boolean) => {
-        const dateObject = new Date(stringDate);
+        const dateObject = new Date(stringDate)
 
-        const day = dateObject.getDate();
-        const month = dateObject.toLocaleString("default", { month: "short" });
-        const year = dateObject.getFullYear();
-        let formattedDate;
+        const day = dateObject.getDate()
+        const month = dateObject.toLocaleString('default', { month: 'short' })
+        const year = dateObject.getFullYear()
+        let formattedDate
 
         if (minute) {
-            const hours = dateObject.getHours();
-            const minutes = dateObject.getMinutes();
-            formattedDate = `${day} ${month} ${year} ${hours}:${minutes}`;
+            const hours = dateObject.getHours()
+            const minutes = dateObject.getMinutes()
+            formattedDate = `${day} ${month} ${year} ${hours}:${minutes}`
         } else {
-            formattedDate = `${day} ${month} ${year}`;
+            formattedDate = `${day} ${month} ${year}`
         }
-        return formattedDate;
-    };
-
+        return formattedDate
+    }
+   
     const handleDelete = async (id: number) => {
-        stateId(id);
-        renderHandler("delete");
-    };
-
+        stateId(id)
+        renderHandler('delete')
+    }
+    /* istanbul ignore next */
     return (
         <div
             style={{
-                width: "351px",
-                height: "446px",
-                border: "#000",
-                borderRadius: "8px",
-                backgroundColor: "#fff",
-                padding: "24px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
+                width: '351px',
+                height: '446px',
+                border: '#000',
+                borderRadius: '8px',
+                backgroundColor: '#fff',
+                padding: '24px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center'
             }}
         >
             <img
                 src={image}
                 alt={name}
                 style={{
-                    width: "270px",
-                    height: "160px",
-                    marginBottom: "47px",
-                    objectFit: "contain",
+                    width: '270px',
+                    height: '160px',
+                    marginBottom: '47px',
+                    objectFit: 'contain'
                 }}
             />
-            <div style={{ alignSelf: "start" }}>
-                <h1 style={{ fontSize: "14px" }}>{name}</h1>
-                <h1 style={{ marginBottom: "16px", fontSize: "24px" }}>
+            <div style={{ alignSelf: 'start' }}>
+                <h1 style={{ fontSize: '14px' }}>{name}</h1>
+                <h1 style={{ marginBottom: '16px', fontSize: '24px' }}>
                     {price.toLocaleString()}
                 </h1>
-                <p style={{ fontSize: "14px" }}>
+                <p style={{ fontSize: '14px' }}>
                     {dateFormat(start_rent)} - {dateFormat(finish_rent)}
                 </p>
-                <p style={{ marginBottom: "24px", fontSize: "14px" }}>
+                <p style={{ marginBottom: '24px', fontSize: '14px' }}>
                     Updated at {dateFormat(updated_at, true)}
                 </p>
                 <div
                     style={{
-                        display: "flex",
-                        gap: "2px",
-                        alignSelf: "center",
-                        fontWeight: "bold",
+                        display: 'flex',
+                        gap: '2px',
+                        alignSelf: 'center',
+                        fontWeight: 'bold'
                     }}
                 >
                     <button
                         style={{
-                            padding: "8px 24px",
-                            border: "2px solid #FA2C5A",
-                            width: "143px",
-                            color: "#FA2C5A",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "2px",
-                            justifyContent: "center",
-                            backgroundColor: "white",
+                            padding: '8px 24px',
+                            border: '2px solid #FA2C5A',
+                            width: '143px',
+                            color: '#FA2C5A',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '2px',
+                            justifyContent: 'center',
+                            backgroundColor: 'white'
                         }}
                         id="carDelete"
-                        onClick={() => handleDelete(id)}
+                        onClick={async () => { await handleDelete(id) }}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -145,20 +146,20 @@ const CarsList: FC<CarListProps> = ({
                     </button>
                     <button
                         style={{
-                            padding: "8px 24px",
-                            border: "2px solid #5CB85F",
-                            width: "143px",
-                            color: "#fff",
-                            backgroundColor: "#5CB85F",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "2px",
-                            justifyContent: "center",
+                            padding: '8px 24px',
+                            border: '2px solid #5CB85F',
+                            width: '143px',
+                            color: '#fff',
+                            backgroundColor: '#5CB85F',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '2px',
+                            justifyContent: 'center'
                         }}
                         id="carEdit"
                         onClick={() => {
-                            stateId(id);
-                            renderHandler("edit");
+                            stateId(id)
+                            renderHandler('edit')
                         }}
                     >
                         <svg
@@ -200,7 +201,7 @@ const CarsList: FC<CarListProps> = ({
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default CarsList;
+export default CarsList

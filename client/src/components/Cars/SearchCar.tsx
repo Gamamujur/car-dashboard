@@ -1,76 +1,76 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
-import "../../App.css";
-import Footer from "../LandingPage/sections/Footer";
-import Offcanvas from "../LandingPage/sections/Offcanvas";
-import { useEffect, useState } from "react";
-import CarsCard from "./components/CarsCard";
-import axios from "axios";
-import { CarAttribute } from "./types/CarAttribute";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import '../../App.css'
+import Footer from '../LandingPage/sections/Footer'
+import Offcanvas from '../LandingPage/sections/Offcanvas'
+import React, { useEffect, useState } from 'react'
+import CarsCard from './components/CarsCard'
+import axios from 'axios'
+import { type CarAttribute } from './types/CarAttribute'
 
-type FormType = {
-    tipeDriver: string;
-    tanggal: string;
-    waktu: string;
-    jumlahPenumpang?: number;
-};
+interface FormType {
+  tipeDriver: string
+  tanggal: string
+  waktu: string
+  jumlahPenumpang?: number
+}
 
 const SearchCar = () => {
-    const [newCarData, setNewData] = useState<CarAttribute[]>([]);
-    const [filterCar, setFilter] = useState<CarAttribute[]>([]);
-    const [formInput, setForm] = useState<FormType | undefined>(undefined);
+    const [newCarData, setNewData] = useState<CarAttribute[]>([])
+    const [filterCar, setFilter] = useState<CarAttribute[]>([])
+    const [formInput, setForm] = useState<FormType | undefined>(undefined)
 
     const fetchCarData = async () => {
         axios
             .get(
-                "http://localhost:3000/cars/"
+                'http://localhost:3000/cars/'
             )
             .then((response) => {
-                const data = response.data;
-                const cloneData = [...data];
+                const data = response.data
+                const cloneData = [...data]
                 const newClone = cloneData.map((car: CarAttribute, index) => {
                     const driverType =
-                        index % 2 === 0 ? "dengan supir" : "tanpa supir";
+                        index % 2 === 0 ? 'dengan supir' : 'tanpa supir'
                     return {
                         ...car,
-                        driverType,
-                    };
-                });
-                setNewData(newClone);
+                        driverType
+                    }
+                })
+                setNewData(newClone)
             })
             .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
-    };
+                return error
+            })
+    }
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
-        const { id, value } = e.target;
+        const { id, value } = e.target
         setForm(
             (prevData) =>
                 ({
                     ...prevData,
-                    [id]: value,
+                    [id]: value
                 } as FormType)
-        );
-    };
+        )
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (formInput) {
-            const tipeDriverValue = formInput.tipeDriver;
-            const tanggalValue = formInput.tanggal;
-            const waktuValue = formInput.waktu;
-            const jumlahPenumpangValue = formInput.jumlahPenumpang;
+            const tipeDriverValue = formInput.tipeDriver
+            const tanggalValue = formInput.tanggal
+            const waktuValue = formInput.waktu
+            const jumlahPenumpangValue = formInput.jumlahPenumpang
 
             if (
-                waktuValue === "" ||
-                tanggalValue === "" ||
-                tipeDriverValue === ""
+                waktuValue === '' ||
+                tanggalValue === '' ||
+                tipeDriverValue === ''
             ) {
-                return;
+                return
             }
 
             if (jumlahPenumpangValue && jumlahPenumpangValue > 0) {
@@ -80,25 +80,23 @@ const SearchCar = () => {
                         new Date(car.available_at) >
                             new Date(`${tanggalValue} ${waktuValue}`) &&
                         car.capacity === Number(jumlahPenumpangValue)
-                );
-                setFilter(availableCars);
-                
+                )
+                setFilter(availableCars)
             } else {
                 const availableCars = newCarData.filter(
                     (car) =>
                         car.driverType === tipeDriverValue &&
                         new Date(car.available_at) >
                             new Date(`${tanggalValue} ${waktuValue}`)
-                );
-                setFilter(availableCars);
-               
+                )
+                setFilter(availableCars)
             }
         }
-    };
+    }
 
     useEffect(() => {
-        fetchCarData();
-    }, []);
+        fetchCarData()
+    }, [])
 
     return (
         <>
@@ -162,9 +160,9 @@ const SearchCar = () => {
                             </h1>
                             <p
                                 style={{
-                                    maxWidth: "468px",
-                                    marginTop: "16px",
-                                    marginBottom: "16px",
+                                    maxWidth: '468px',
+                                    marginTop: '16px',
+                                    marginBottom: '16px'
                                 }}
                             >
                                 Selamat datang di Binar Car Rental. Kami
@@ -248,7 +246,7 @@ const SearchCar = () => {
                                 <span className="bg-white input-group-text border-start-0">
                                     <i>
                                         <img
-                                            src={"./images/fi_users.png"}
+                                            src={'./images/fi_users.png'}
                                             className="img-fluid"
                                         />
                                     </i>
@@ -262,6 +260,7 @@ const SearchCar = () => {
                                 className="btn btn-success"
                                 id="search-car"
                                 type="submit"
+                                data-testid="search-car-button"
                             >
                                 Cari Mobil
                             </button>
@@ -290,7 +289,7 @@ const SearchCar = () => {
             <Footer />
             <Offcanvas />
         </>
-    );
-};
+    )
+}
 
-export default SearchCar;
+export default SearchCar

@@ -1,4 +1,4 @@
-
+import React from 'react'
 const Offcanvas = () => {
     return (
         <div
@@ -52,7 +52,7 @@ const Offcanvas = () => {
                 </ul>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Offcanvas;
+export default Offcanvas
