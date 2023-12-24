@@ -1,5 +1,5 @@
 # car-dashboard
-# Challenge 7
+# Challenge 8
 
 This project implements the use of ReactJS for the Front-End side, and Express for the Back-End side. User is available to use the search car feature through accessing /cars url, while for the Dashboard is only available for admin and superadmin.
 
