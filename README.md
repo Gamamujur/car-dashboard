@@ -5,6 +5,9 @@ This project implements the use of ReactJS for the Front-End side, and Express f
 
 Note : For the search car feature, make sure the month is around January or February (because the available date is randomly set between those months)
 
+Client Deploy : https://car-rental-deploy.netlify.app/
+Backend Deploy : https://api-binar-car-rental.fly.dev
+
 # How to Use
 
 1. Clone this project branch, and place it into your local repository / workplace.
